@@ -1,0 +1,31 @@
+{
+  "general": {
+    "404": {
+      "title": "404 Página no encontrada",
+      "subtext": "La página que buscas no existe."
+    },
+    "breadcrumbs": {
+      "home": "Inicio"
+    },
+    "meta": {
+      "tags": "Etiquetado \"{{ tags }}\"",
+      "page": "Página {{ page }}"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Carrito de compras",
+      "remove": "Eliminar",
+      "subtotal": "Subtotal",
+      "checkout": "Finalizar compra"
+    }
+  },
+  "products": {
+    "product": {
+      "sold_out": "Agotado",
+      "unavailable": "No disponible",
+      "add_to_cart": "Agregar al carrito",
+      "quantity": "Cantidad"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<div class="featured-products">
+  <h2>{{ section.settings.title }}</h2>
+  
+  <div class="product-grid">
+    {% for product in collections.all.products limit: 4 %}
+      <div class="product-item">
+        <a href="{{ product.url }}">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+          {% endif %}
+          <h3>{{ product.title }}</h3>
+          <p>{{ product.price | money }}</p>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Productos destacados",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Productos destacados"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Productos destacados"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,31 @@
+{% comment %}
+  Snippet para mostrar una tarjeta de producto
+  Uso: {% render 'product-card', product: product %}
+{% endcomment %}
+
+<div class="product-card">
+  <a href="{{ product.url }}">
+    {% if product.featured_image %}
+      <img 
+        src="{{ product.featured_image | img_url: 'medium' }}" 
+        alt="{{ product.title | escape }}"
+        loading="lazy"
+      >
+    {% endif %}
+    
+    <h3>{{ product.title }}</h3>
+    
+    <div class="product-price">
+      {% if product.compare_at_price > product.price %}
+        <span class="price-sale">{{ product.price | money }}</span>
+        <span class="price-compare">{{ product.compare_at_price | money }}</span>
+      {% else %}
+        <span class="price">{{ product.price | money }}</span>
+      {% endif %}
+    </div>
+    
+    {% unless product.available %}
+      <span class="badge-sold-out">{{ 'products.product.sold_out' | t }}</span>
+    {% endunless %}
+  </a>
+</div>

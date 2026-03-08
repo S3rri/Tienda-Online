@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title }}{% if page_title != blank %} - {% endif %}{{ shop.name }}</title>
+  
+  <meta name="description" content="{{ page_description | default: shop.description }}">
+  
+  {{ content_for_header }}
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+  
+  <style>
+    :root {
+      --color-principal: {{ settings.color_principal | default: '#C99114' }};
+      --color-fondo: {{ settings.color_fondo | default: '#FFFFFF' }};
+      --color-texto: {{ settings.color_texto | default: '#333333' }};
+      --color-texto-claro: {{ settings.color_texto_claro | default: '#666666' }};
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="header-logo">
+        {% if settings.logo %}
+          <a href="/">
+            <img src="{{ settings.logo | img_url: 'master' }}" 
+                 alt="{{ shop.name }}" 
+                 style="max-width: {{ settings.logo_width }}px;">
+          </a>
+        {% else %}
+          <a href="/" class="logo-text">{{ shop.name }}</a>
+        {% endif %}
+      </div>
+      
+      <nav class="header-nav">
+        <a href="/collections/novia">NOVIA</a>
+        <a href="/collections/fiesta">FIESTA</a>
+        <a href="/collections/tallas-especiales">TALLAS ESPECIALES</a>
+        <a href="/collections/complementos">COMPLEMENTOS</a>
+        <a href="/collections/outlet">OUTLET</a>
+      </nav>
+      
+      <div class="header-actions">
+        <a href="/search" class="header-icon" aria-label="Buscar">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="8" cy="8" r="6"/>
+            <path d="M13 13l5 5"/>
+          </svg>
+        </a>
+        <a href="/account" class="header-icon" aria-label="Cuenta">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="10" cy="6" r="3"/>
+            <path d="M3 18c0-3.3 3.1-6 7-6s7 2.7 7 6"/>
+          </svg>
+        </a>
+        <a href="/cart" class="header-icon" aria-label="Carrito">
+          {% render 'icon-cart' %}
+          {% if cart.item_count > 0 %}
+            <span class="cart-count">{{ cart.item_count }}</span>
+          {% endif %}
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main role="main" class="main-content">
+    {{ content_for_layout }}
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Azalea Novias</h3>
+        <p>36 años vistiendo tus momentos especiales</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Categorías</h4>
+        <ul>
+          <li><a href="/collections/novia">Novia</a></li>
+          <li><a href="/collections/fiesta">Fiesta</a></li>
+          <li><a href="/collections/tallas-especiales">Tallas Especiales</a></li>
+          <li><a href="/collections/complementos">Complementos</a></li>
+          <li><a href="/collections/outlet">Outlet</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Información</h4>
+        <ul>
+          <li><a href="/pages/conocenos">Conócenos</a></li>
+          <li><a href="/pages/nuestras-bodas">Nuestras Bodas</a></li>
+          <li><a href="/pages/contacto">Contacto</a></li>
+          <li><a href="/pages/envios">Envíos y Devoluciones</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <p>{{ shop.email }}</p>
+        <p>{{ shop.phone | default: '+34 XXX XXX XXX' }}</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {{ 'now' | date: "%Y" }} {{ shop.name }}. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+</body>
+</html>

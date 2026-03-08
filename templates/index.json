@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "title": "Azalea Novias",
+        "text": "36 años vistiendo tus momentos especiales. Descubre nuestra colección de vestidos de novia, madrina y fiesta"
+      }
+    },
+    "categories": {
+      "type": "categories",
+      "settings": {
+        "title": "Nuestras Colecciones",
+        "show_novia": true,
+        "show_fiesta": true,
+        "show_tallas": true,
+        "show_complementos": true,
+        "show_outlet": true
+      }
+    },
+    "featured_products": {
+      "type": "featured-products",
+      "settings": {
+        "title": "Vestidos Destacados"
+      }
+    },
+    "about": {
+      "type": "about",
+      "settings": {
+        "title": "Conócenos",
+        "text": "<p>Azalea Novias lleva 36 años vistiendo los momentos más especiales de tu vida. Somos especialistas en vestidos de novia, madrina y fiesta, ofreciendo un servicio personalizado y cercano que nos ha convertido en referencia.</p>",
+        "button_text": "Nuestra Historia",
+        "button_link": "/pages/conocenos"
+      }
+    },
+    "weddings": {
+      "type": "weddings-gallery",
+      "settings": {
+        "title": "Nuestras Bodas",
+        "subtitle": "Algunos de los momentos especiales que hemos tenido el honor de vestir",
+        "button_text": "Ver Galería Completa",
+        "button_link": "/pages/nuestras-bodas"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "categories",
+    "featured_products",
+    "about",
+    "weddings"
+  ]
+}

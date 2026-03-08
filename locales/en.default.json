@@ -1,0 +1,31 @@
+{
+  "general": {
+    "404": {
+      "title": "404 Page Not Found",
+      "subtext": "The page you requested does not exist."
+    },
+    "breadcrumbs": {
+      "home": "Home"
+    },
+    "meta": {
+      "tags": "Tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Shopping Cart",
+      "remove": "Remove",
+      "subtotal": "Subtotal",
+      "checkout": "Check Out"
+    }
+  },
+  "products": {
+    "product": {
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "add_to_cart": "Add to Cart",
+      "quantity": "Quantity"
+    }
+  }
+}

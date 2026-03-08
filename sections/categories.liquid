@@ -1,0 +1,239 @@
+<div class="categories-section">
+  <div class="categories-container">
+    <h2>{{ section.settings.title }}</h2>
+    
+    <div class="categories-grid">
+      {% if section.settings.show_novia %}
+      <a href="/collections/novia" class="category-card">
+        {% if section.settings.image_novia %}
+          <img src="{{ section.settings.image_novia | img_url: 'large' }}" alt="Novia">
+        {% endif %}
+        <div class="category-overlay">
+          <h3>NOVIA</h3>
+          <p>Encuentra el vestido de tus sueños</p>
+        </div>
+      </a>
+      {% endif %}
+      
+      {% if section.settings.show_fiesta %}
+      <a href="/collections/fiesta" class="category-card">
+        {% if section.settings.image_fiesta %}
+          <img src="{{ section.settings.image_fiesta | img_url: 'large' }}" alt="Fiesta">
+        {% endif %}
+        <div class="category-overlay">
+          <h3>FIESTA</h3>
+          <p>Elegancia para eventos especiales</p>
+        </div>
+      </a>
+      {% endif %}
+      
+      {% if section.settings.show_tallas %}
+      <a href="/collections/tallas-especiales" class="category-card">
+        {% if section.settings.image_tallas %}
+          <img src="{{ section.settings.image_tallas | img_url: 'large' }}" alt="Tallas Especiales">
+        {% endif %}
+        <div class="category-overlay">
+          <h3>TALLAS ESPECIALES</h3>
+          <p>Belleza en todas las tallas</p>
+        </div>
+      </a>
+      {% endif %}
+      
+      {% if section.settings.show_complementos %}
+      <a href="/collections/complementos" class="category-card">
+        {% if section.settings.image_complementos %}
+          <img src="{{ section.settings.image_complementos | img_url: 'large' }}" alt="Complementos">
+        {% endif %}
+        <div class="category-overlay">
+          <h3>COMPLEMENTOS</h3>
+          <p>El toque final perfecto</p>
+        </div>
+      </a>
+      {% endif %}
+      
+      {% if section.settings.show_outlet %}
+      <a href="/collections/outlet" class="category-card">
+        {% if section.settings.image_outlet %}
+          <img src="{{ section.settings.image_outlet | img_url: 'large' }}" alt="Outlet">
+        {% endif %}
+        <div class="category-overlay">
+          <h3>OUTLET</h3>
+          <p>Ofertas especiales</p>
+        </div>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+.categories-section {
+  padding: 4rem 2rem;
+  background: #fafafa;
+}
+
+.categories-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.categories-container h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #C99114;
+  font-size: 2.5rem;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.category-card {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.category-card:hover img {
+  transform: scale(1.1);
+}
+
+.category-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  padding: 2rem;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.category-overlay h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+}
+
+.category-overlay p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Categorías principales",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Nuestras Colecciones"
+    },
+    {
+      "type": "header",
+      "content": "Novia"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_novia",
+      "label": "Mostrar Novia",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image_novia",
+      "label": "Imagen Novia"
+    },
+    {
+      "type": "header",
+      "content": "Fiesta"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_fiesta",
+      "label": "Mostrar Fiesta",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image_fiesta",
+      "label": "Imagen Fiesta"
+    },
+    {
+      "type": "header",
+      "content": "Tallas Especiales"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tallas",
+      "label": "Mostrar Tallas Especiales",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image_tallas",
+      "label": "Imagen Tallas Especiales"
+    },
+    {
+      "type": "header",
+      "content": "Complementos"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_complementos",
+      "label": "Mostrar Complementos",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image_complementos",
+      "label": "Imagen Complementos"
+    },
+    {
+      "type": "header",
+      "content": "Outlet"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_outlet",
+      "label": "Mostrar Outlet",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image_outlet",
+      "label": "Imagen Outlet"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Categorías principales"
+    }
+  ]
+}
+{% endschema %}

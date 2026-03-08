@@ -1,0 +1,157 @@
+<div class="weddings-gallery">
+  <div class="weddings-container">
+    <h2>{{ section.settings.title }}</h2>
+    <p class="weddings-subtitle">{{ section.settings.subtitle }}</p>
+    
+    <div class="gallery-grid">
+      {% for block in section.blocks %}
+        <div class="gallery-item">
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | img_url: 'large' }}" alt="{{ block.settings.caption }}">
+          {% endif %}
+          {% if block.settings.caption != blank %}
+            <p class="gallery-caption">{{ block.settings.caption }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+    
+    {% if section.settings.button_text != blank %}
+      <div class="weddings-cta">
+        <a href="{{ section.settings.button_link }}" class="btn-primary">
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+.weddings-gallery {
+  padding: 4rem 2rem;
+  background: #fafafa;
+}
+
+.weddings-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.weddings-container h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #C99114;
+  margin-bottom: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.weddings-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 3rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: white;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.weddings-cta {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Nuestras Bodas",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Nuestras Bodas"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Algunos de los momentos especiales que hemos tenido el honor de vestir"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Texto del botón",
+      "default": "Ver más bodas"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Enlace del botón",
+      "default": "/pages/nuestras-bodas"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Imagen",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Descripción",
+          "default": "Descripción de la foto"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nuestras Bodas"
+    }
+  ]
+}
+{% endschema %}

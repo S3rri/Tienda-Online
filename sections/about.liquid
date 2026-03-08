@@ -1,0 +1,128 @@
+<div class="about-section">
+  <div class="about-container">
+    <div class="about-content">
+      <div class="about-text">
+        <h2>{{ section.settings.title }}</h2>
+        <div class="about-description">
+          {{ section.settings.text }}
+        </div>
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_link }}" class="btn-primary">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+      
+      {% if section.settings.image %}
+      <div class="about-image">
+        <img src="{{ section.settings.image | img_url: 'large' }}" alt="{{ section.settings.title }}">
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+.about-section {
+  padding: 4rem 2rem;
+  background: white;
+}
+
+.about-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  color: #C99114;
+  margin-bottom: 1.5rem;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.about-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: #C99114;
+  color: white;
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border: 2px solid #C99114;
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: #C99114;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Conócenos",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Conócenos"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texto",
+      "default": "<p>Azalea Novias lleva 36 años vistiendo los momentos más especiales de tu vida. Somos especialistas en vestidos de novia, madrina y fiesta, ofreciendo un servicio personalizado y cercano que nos ha convertido en referencia en nuestra ciudad.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Texto del botón",
+      "default": "Nuestra Historia"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Enlace del botón",
+      "default": "/pages/conocenos"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Conócenos"
+    }
+  ]
+}
+{% endschema %}
